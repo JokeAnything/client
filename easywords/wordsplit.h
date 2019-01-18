@@ -1,9 +1,9 @@
 /*****************************************************************************
-*  版权所有（C）2005-2017，上海二三四五网络科技有限公司                        *
+*  版权所有（C）2005-2017                                                   *
 *  保留所有权利。                                                            *
 ******************************************************************************
 *  作者 : 郑宗超
-*  版本 : 3.4
+*  版本 : 1.0
 *****************************************************************************/
 
 #ifndef __RCWordSplit_h_
@@ -19,6 +19,9 @@
 
 BEGIN_NAMESPACE_RC
 
+/**
+Just only support for multibytes encode style.
+*/
 struct RCWORD_METRIC
 {
     RCStringA m_word;
@@ -35,7 +38,7 @@ public:
     bool Initialize();
     void Uninitialize();
 
-    bool SetDataByString(const RCString& srcString);
+    bool SetDataByString(const RCStringA& srcString);
 
     bool SetDataByFile(const RCString& filePath);
 

@@ -24,14 +24,14 @@ void RCWordSplit::Uninitialize()
     m_wordExplain.Uninitialize();
 }
 
-bool RCWordSplit::SetDataByString(const RCString& srcString)
+bool RCWordSplit::SetDataByString(const RCStringA& srcString)
 {
     m_dataSrc = "";
     if (srcString.empty())
     {
         return false;
     }
-    m_dataSrc = RCStringConvert::ConvertUnicodeToUTF8(srcString);
+    m_dataSrc = srcString;
 
     if (m_dataSrc.empty())
     {
@@ -120,24 +120,30 @@ bool RCWordSplit::ProcessData(RCVector<RCWORD_METRIC>& wordsInfo, const RCString
                 RCWordInfomation wi;
                 if (m_wordExplain.GetWordInfo(wm.m_word, wi))
                 {
-                    outputStr += '[';
                     if (!wi.m_us_phonetic.empty())
                     {
+                        outputStr += '[';
                         outputStr += wi.m_us_phonetic;
+                        outputStr += ']';
                     }
                     else if (!wi.m_uk_phonetic.empty())
                     {
+                        outputStr += '<';
                         outputStr += wi.m_uk_phonetic;
+                        outputStr += '>';
                     }
                     else if (!wi.m_phonetic.empty())
                     {
+                        outputStr += '{';
                         outputStr += wi.m_phonetic;
+                        outputStr += '}';
                     }
                     else
                     {
-                        outputStr += "x";
+                        outputStr += '[';
+                        outputStr += "-";
+                        outputStr += ']';
                     }
-                    outputStr += ']';
                 }
             }
             curWord[0] = '\0';

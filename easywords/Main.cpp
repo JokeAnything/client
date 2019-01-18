@@ -8,19 +8,10 @@ void TestProc()
 {
     RCWordSplit spl;
     spl.Initialize();
-    //RCString str = _T("The group performs songs like \"We're Not Gonna Take It\" by the band Twisted Sister and \"Rock and Roll All Nite\" by KISS in their one of a kind style.");
-    //spl.SetDataByString(str);
-
-    spl.SetDataByFile(_T("kungfupanda.txt"));
+    spl.SetDataByFile(_T("kungfupanda_s1-2.txt"));
     RCVector<RCWORD_METRIC> result;
-    spl.ProcessData(result,_T("result.txt"));
+    spl.ProcessData(result,_T("kungfupanda_s1-2_result.txt"));
     spl.Uninitialize();
-
-    //RCWordInfo wordInfo;
-    //RCWordInfomation info;
-    //wordInfo.Initialize();
-    //wordInfo.GetWordInfo("love", info);
-    //wordInfo.Uninitialize();
 }
 END_NAMESPACE_RC
 
